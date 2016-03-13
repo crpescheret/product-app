@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    render "index.html.erb"
+    render 'index.html.erb'
   end
 
   def new
@@ -11,37 +11,35 @@ class ProductsController < ApplicationController
   def show
     product_id = params[:id]
     @product = Product.find_by(id: product_id)
-    render "show.html.erb"
+    render 'show.html.erb'
   end
 
   def create
-    Product.create({name: params[:name], 
-                    price: params[:price], 
-                    brand: params[:brand], 
-                    description: params[:description],
-                    image: params[:image]})
-    all_product = Product.all
-    @product = all_product[-1]
-    render 'create.html.erb'
+    product = Product.create({name: params[:name], 
+                              price: params[:price], 
+                              brand: params[:brand], 
+                              description: params[:description],
+                              image: params[:image]})
+    redirect_to "/products/#{product.id}"
   end
 
   def edit
     product_id = params[:id]
     @product = Product.find_by(id: product_id)
-    render "edit.html.erb"
+    render 'edit.html.erb'
   end
 
   def update
     product_id = params[:id]
     @product = Product.find_by(id: product_id)
     @product.update({name: params[:name], price: params[:price], brand: params[:brand], description: params[:description], image: params[:image]})
-    render 'update.html.erb'
+    redirect_to "/products/#{@product.id}"
   end
 
   def destroy
     product_id = params[:id]
     @product = Product.find_by(id: product_id)
     @product.destroy
-    render 'destroy.html.erb'
+    redirect_to '/products'
   end
 end
