@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
                               brand: params[:brand], 
                               description: params[:description],
                               image: params[:image]})
+    flash[:success] = "Product successfully created!"
     redirect_to "/products/#{product.id}"
   end
 
@@ -33,6 +34,7 @@ class ProductsController < ApplicationController
     product_id = params[:id]
     @product = Product.find_by(id: product_id)
     @product.update({name: params[:name], price: params[:price], brand: params[:brand], description: params[:description], image: params[:image]})
+    flash[:success] = "Product successfully updated!"
     redirect_to "/products/#{@product.id}"
   end
 
@@ -40,6 +42,7 @@ class ProductsController < ApplicationController
     product_id = params[:id]
     @product = Product.find_by(id: product_id)
     @product.destroy
+    flash[:warning] = "Product deleted!"
     redirect_to '/products'
   end
 end
