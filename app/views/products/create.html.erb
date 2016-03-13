@@ -1,0 +1,8 @@
+<h1>You created a product!</h1> 
+
+<img src=<%=@product.image%>>
+<h3><%=@product.name%>: <small>$<%= @product.price %></small></h3>
+<p><%=@product.description%></p>
+<h5><%=@product.brand%></h5>
+
+<%= link_to "Back to all products", "/products" %>

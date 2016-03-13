@@ -1,0 +1,6 @@
+<img src=<%=@product.image%>>
+<h3><%=@product.name%>: <small>$<%=@product.price%></small></h3>
+<p><%=@product.description%></p>
+<%= link_to "Edit this product", "/products/#{@product.id}/edit" %><br>
+<%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %><br>
+<%= link_to "Back to all products", "/products" %>
