@@ -1,15 +1,18 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.well img {
+  width: 85%;
+}
+
 img {
-  height: 200px;
-  width: 350px;
+  width: 300px;
 }
 
 .page-header {
   text-align: center;
 }
 
-.thumb {
-  display: block;
+a {
+  color: #2A423D;
 }

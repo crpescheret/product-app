@@ -1,6 +1,13 @@
-<img src=<%=@product.image%>>
-<h3><%=@product.name%>: <small>$<%=@product.price%></small></h3>
-<p><%=@product.description%></p>
-<%= link_to "Edit this product", "/products/#{@product.id}/edit" %><br>
-<%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %><br>
-<%= link_to "Back to all products", "/products" %>
+  <img src=<%=@product.image%>>
+  <h3><%=@product.name%>: <small>$<%=@product.price%></small></h3>
+  <h5><%= @product.sale_message %></h5>
+<br>
+  <p><%=@product.description%></p>
+<br>
+  <p>Tax: <%=@product.tax%> </p>
+  <p>Total: $<%=@product.total%> </p>
+<br>
+  <h6><i>Updated on <%= @product.format_updated_at%></i></h6>
+  <%= link_to "Edit this product", "/products/#{@product.id}/edit" %><br>
+  <%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %><br>
+  <%= link_to "Back to all products", "/products" %>
