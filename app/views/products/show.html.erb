@@ -1,13 +1,23 @@
-  <img src=<%=@product.image%>>
-  <h3><%=@product.name%>: <small>$<%=@product.price%></small></h3>
+  <h3><%=@product.name %>: <small><%=number_to_currency(@product.price)%></small></h3>
   <h5><%= @product.sale_message %></h5>
 <br>
   <p><%=@product.description%></p>
+  <h4>Supplier: <%= @product.supplier.name %></h4>
+  <p><%=@product.in_stock%></p>
 <br>
-  <p>Tax: <%=@product.tax%> </p>
-  <p>Total: $<%=@product.total%> </p>
+  <p>Tax: <%=number_to_currency(@product.tax)%> </p>
+  <p>Total: <%=number_to_currency(@product.total)%></p>
 <br>
   <h6><i>Updated on <%= @product.format_updated_at%></i></h6>
+
+  <%= form_tag "/orders", method: :post do%>
+  <div>
+    <%= label_tag :quantity %>
+    <%= text_field_tag :quantity %>
+    <%= hidden_field_tag :product_id, @product.id%>
+    <%= submit_tag "Place Order!" %>
+  </div>
+  <% end %>
   <%= link_to "Edit this product", "/products/#{@product.id}/edit" %><br>
   <%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %><br>
   <%= link_to "Back to all products", "/products" %>
